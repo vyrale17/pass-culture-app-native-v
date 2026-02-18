@@ -599,22 +599,22 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                   }
                 >
                   <View
-                    height={20}
-                    testID="BicolorProfile"
-                    width={20}
-                  >
-                    <Text>
-                      BicolorProfile-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       {
-                        "width": 8,
+                        "marginRight": 8,
                       }
                     }
-                  />
+                  >
+                    <View
+                      height={20}
+                      testID="BicolorProfile"
+                      width={20}
+                    >
+                      <Text>
+                        BicolorProfile-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       {
@@ -702,21 +702,21 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                   }
                 >
                   <View
-                    height={20}
-                    width={20}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       {
-                        "width": 8,
+                        "marginRight": 8,
                       }
                     }
-                  />
+                  >
+                    <View
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       {
@@ -793,22 +793,22 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKINGS_ENDED_ONGOI
                   }
                 >
                   <View
-                    fill="#161617"
-                    height={20}
-                    width={20}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                  <View
-                    numberOfSpaces={2}
                     style={
                       {
-                        "width": 8,
+                        "marginRight": 8,
                       }
                     }
-                  />
+                  >
+                    <View
+                      fill="#161617"
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
                   <View
                     style={
                       {
