@@ -1,9 +1,8 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react'
-import { LayoutChangeEvent, ScrollView, View } from 'react-native'
+import React, { forwardRef, ReactNode, useState } from 'react'
+import { LayoutChangeEvent, Platform, ScrollView, ScrollViewProps, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useGetHeaderHeight } from 'shared/header/useGetHeaderHeight'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import { PageHeaderWithoutPlaceholder } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { CustomKeyboardAvoidingView } from 'ui/pages/components/CustomKeyboardAvoidingView'
 import { useShouldEnableScrollOnView } from 'ui/pages/helpers/useShouldEnableScrollView'
@@ -12,13 +11,16 @@ import { Spacer } from 'ui/theme'
 
 interface Props {
   title: string
+  onGoBack?: () => void
   scrollChildren?: ReactNode
   fixedBottomChildren?: ReactNode
-  onGoBack?: () => void
   shouldDisplayBackButton?: boolean
+  RightButton?: ReactNode
+  shouldBeAlignedFlexStart?: boolean
+  scrollViewProps?: Omit<ScrollViewProps, 'contentContainerStyle'>
 }
-
-export const PageWithHeader: FunctionComponent<Props> = (props) => {
+const isWeb = Platform.OS === 'web'
+export const PageWithHeader = forwardRef<ScrollView, Props>((props, ref) => {
   const headerHeight = useGetHeaderHeight()
 
   const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
@@ -35,10 +37,14 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
         title={props.title}
         onGoBack={props.onGoBack}
         shouldDisplayBackButton={props.shouldDisplayBackButton}
+        RightButton={props.RightButton}
       />
-      <CustomKeyboardAvoidingView>
+      <CustomKeyboardAvoidingView
+        shouldBeAlignedFlexStart={isWeb && props.shouldBeAlignedFlexStart}>
         {props.scrollChildren ? (
           <ChildrenScrollView
+            ref={ref}
+            {...props.scrollViewProps}
             bottomChildrenViewHeight={bottomChildrenViewHeight}
             onContentSizeChange={onScrollViewContentSizeChange}
             onLayout={onScrollViewLayout}>
@@ -53,10 +59,10 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
           </FixedBottomChildrenView>
         ) : null}
       </CustomKeyboardAvoidingView>
-      <BlurHeader height={headerHeight} />
     </Page>
   )
-}
+})
+PageWithHeader.displayName = 'PageWithHeader'
 
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
 const ChildrenScrollView = styled(ScrollView).attrs<ChildrenScrollViewProps>(
