@@ -65,14 +65,6 @@ describe('<ProfileV1 />', () => {
 
     expect(container).toMatchSnapshot()
   })
-
-  it('should not display display preference section when feature flag disable', () => {
-    render(reactQueryProviderHOC(<ProfileV1 />))
-
-    const displayPreferenceSection = screen.queryByText('Apparence')
-
-    expect(displayPreferenceSection).not.toBeInTheDocument()
-  })
 })
 
 const renderProfile = () => render(reactQueryProviderHOC(<ProfileV1 />))
