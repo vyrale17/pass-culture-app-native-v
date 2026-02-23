@@ -168,6 +168,7 @@ export function Offer() {
             closeModal={hideOfferArtistsModal}
             artists={offer.artists}
             navigateTo={{ screen: 'Artist' }}
+            offerId={offer.id}
           />
         ) : null}
       </View>
